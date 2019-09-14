@@ -1,14 +1,9 @@
 # Order accounting system
 
-## Create .env
-
-```
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=order_accounting_system
-DB_USERNAME=root
-DB_PASSWORD=
+```shell script
+php composer install
+cp -a .env.example .env
+php artisan key:generate
 ```
 
 ## Database initialization
