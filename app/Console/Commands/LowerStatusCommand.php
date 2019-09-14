@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Services\OrderServiceContract;
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class LowerStatusCommand extends Command
 {
@@ -51,6 +52,8 @@ class LowerStatusCommand extends Command
             $order = $orderService->lowerStatus($orderId);
 
             $this->info("Order id: {$order->id}. Status: {$order->status}.");
+        } catch (ModelNotFoundException $exception) {
+            $this->error("Order  with id: {$orderId} not found.");
         } catch (Exception $exception) {
             $this->error("Order: {$orderId}.");
             $this->error($exception->getMessage());
